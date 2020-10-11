@@ -1,0 +1,7 @@
+.Canvas {
+  position: fixed;
+  border: solid gray 3px;
+  border-style: ridge;
+  background-color: white;
+  top: 25%;
+}

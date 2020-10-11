@@ -1,0 +1,58 @@
+.FinalCanvas {
+  position: fixed;
+  top: 65%;
+  left: 55%;
+  border: solid gray 3px;
+  border-style: ridge;
+  background-color: white;
+}
+.SubmitButton {
+  position: fixed;
+  top: 61.5%;
+  left: 66%;
+  font-family: 'Geneva', sans-serif;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: #f0f0f0;
+  color:black;
+
+}
+
+.SubmitButton:hover {
+  animation-name: button-hov;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+.Button{
+  position: fixed;
+  left: 44%;
+  text-align: center;
+  padding: 2px 5px 2px 5px;
+  font-family: 'Geneva', sans-serif;
+  border-radius: 5px;
+  border: 1px solid gray;
+  font-size: 13px;
+  background-color: #f0f0f0;
+}
+.Button:hover{
+  background-color: #dbdbdb
+}
+
+@keyframes button-hov{
+  0% {
+      background-color:#009933;
+      box-shadow: 0px 0px 10px 20px #f0f0f0 inset;
+      color: black;
+    }
+  50% {
+      background-color:#009933;
+      box-shadow: 0px 0px 10px 10px #f0f0f0 inset;
+      color: black;
+    }
+  100%{
+      background-color:#009933;
+      box-shadow: 0px 0px 0px 0px #f0f0f0 inset;
+      color: white;
+    }
+}
