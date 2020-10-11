@@ -1,5 +1,5 @@
  ## Green Screen Generator ##
-A website where users can upload two images, a foreground and a background, and use _green screen magic_ to create a composite image. <br />
+A website where users can upload two images (foreground and a background) and use _green screen magic_ to create a composite image. <br />
 * The app uses an algorithm to analyze pixel data and replace those identified as green with pixels from another image.
 * Has functionality to convert PNGs into green screen images by filling the background with chroma key green.
 
