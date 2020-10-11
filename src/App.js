@@ -6,6 +6,8 @@ import {UserCanvas} from './UserCanvas.js';
 
 const height = 225;
 const width = 325;
+const green = '#009933';
+const blue = '#0047bb';
 
 export class App extends React.Component{
   constructor(props){
@@ -13,14 +15,24 @@ export class App extends React.Component{
     this.state = {
       image1: '',
       image2: '',
-      canvasSelect:''
+      canvasSelect:'',
+      chromaKey: '#009933'
     }
     this.loadImage = this.loadImage.bind(this);
     this.changeCanvas = this.changeCanvas.bind(this);
+    this.toggleKey = this.toggleKey.bind(this);
   }
   changeCanvas = (e) => { // set canvas selection
     const num = e.target.id;
     this.setState({canvasSelect:num});
+  }
+  toggleKey = () => {
+    if(this.state.chromaKey === green){
+      this.setState({chromaKey:blue});
+    }
+    else {
+      this.setState({chromaKey:green});
+    }
   }
   loadImage = (e) => {
     let file = e.target.files[0];
@@ -36,7 +48,7 @@ export class App extends React.Component{
               const tempContxt = tempCan.getContext('2d');
               tempCan.width = width;
               tempCan.height = height;
-              tempContxt.fillStyle = '#009933';
+              tempContxt.fillStyle = green;
               tempContxt.fillRect(0,0,width,height);
               tempContxt.drawImage(imag,0,0,imag.width, imag.height, 0, 0, width, height);
               this.setState({image1:tempCan.toDataURL('image/jpeg', 1.0)}); // set image1 state to new filled image
@@ -74,6 +86,10 @@ clearCanvas = () => { // set state triggers rerender, images will clear
           <br></br>
           When you're ready, hit the magic button!
         </p>
+        <div className='Toggle'>
+          <input type="checkbox" id="switch" className="KeyToggle" onClick={this.toggleKey} />
+          <label for="switch" className="ToggleLabel"></label>
+        </div>
           {/* Foreground Canvas and Upload Button */}
             <h2 className='CanvasTitle' style={{left:'40%'}}>
             Step One:<br></br>
@@ -99,7 +115,7 @@ clearCanvas = () => { // set state triggers rerender, images will clear
           {/* Green Screen Component */}
             <h2 className='CanvasTitle' style={{top:'58%', left:'55%'}}>
             Step Three:</h2>
-            <GreenScreen image1={this.state.image1} image2={this.state.image2} clearCanvas={this.clearCanvas}/>
+            <GreenScreen image1={this.state.image1} image2={this.state.image2} clearCanvas={this.clearCanvas} chromaKey = {this.state.chromaKey}/>
       </div>
     );
   }

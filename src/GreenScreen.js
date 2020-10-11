@@ -11,6 +11,7 @@ export class GreenScreen extends React.Component {
     this.clear = this.clear.bind(this);
   }
   greenScreen = () => {
+    let chromaKey = this.props.chromaKey;
     let image1 = new Image();
     let image2 = new Image();
     image1.src = this.props.image1;
@@ -40,11 +41,21 @@ export class GreenScreen extends React.Component {
         const blue = newImgPixels[i + 2];
         //might use in future: const alpha = newImgPixels[i + 3];
 
-        if(green > (red+blue)){ // if pixel is green, replace pixel data with BG pixel data in corresponding position
-            newImgPixels[i] = backgroundPixels[i];
-            newImgPixels[i+1] = backgroundPixels[i+1];
-            newImgPixels[i+2] = backgroundPixels[i+2];
-            newImgPixels[i+3] = backgroundPixels[i+3];
+        if(chromaKey === '#009933'){
+          if(green > (red+blue)){ // if pixel is green, replace pixel data with BG pixel data in corresponding position
+              newImgPixels[i] = backgroundPixels[i];
+              newImgPixels[i+1] = backgroundPixels[i+1];
+              newImgPixels[i+2] = backgroundPixels[i+2];
+              newImgPixels[i+3] = backgroundPixels[i+3];
+          }
+        }
+        else {
+          if(blue > (red+green)){ // if pixel is blue, replace pixel data with BG pixel data in corresponding position
+              newImgPixels[i] = backgroundPixels[i];
+              newImgPixels[i+1] = backgroundPixels[i+1];
+              newImgPixels[i+2] = backgroundPixels[i+2];
+              newImgPixels[i+3] = backgroundPixels[i+3];
+          }
         }
       }
     fgContxt.putImageData(newImgData, 0, 0);

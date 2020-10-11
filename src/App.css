@@ -79,6 +79,42 @@
   font-family: 'Geneva', sans-serif;
   font-size: 13px;
 }
+.KeyToggle {
+  position: fixed;
+  vertical-align: middle;
+  display: none;
+}
+.ToggleLabel{
+  position : relative;
+  display : inline-block;
+  width : 60px;
+  height : 25px;
+  background-color: #009933;
+  border-radius: 30px;
+  border: 2px solid gray;
+}
+.ToggleLabel::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+.KeyToggle:checked + .ToggleLabel::after {
+  left : 37px;
+}
+.KeyToggle:checked + .ToggleLabel {
+  background-color: #0047bb;
+}
+.Toggle {
+  position: fixed;
+  top: 70%;
+  left: 5%;
+}
 @keyframes jump{
   0% {top:4%;}
   50% {top:2%;}
